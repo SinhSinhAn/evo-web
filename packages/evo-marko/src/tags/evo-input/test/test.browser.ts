@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, it, expect } from "vitest";
 import { composeStories } from "@storybook/marko";
 import { render, fireEvent, cleanup } from "@marko/testing-library";
 import template from "../index.marko";
-import * as stories from "../textbox.stories";
+import * as stories from "../input.stories";
 
 const { Isolated, FloatingLabel, BothIcons } = composeStories(stories);
 
@@ -12,7 +12,7 @@ afterEach(cleanup);
 
 let component: Awaited<ReturnType<typeof render>>;
 
-describe("given an input textbox with floating label and no value", () => {
+describe("given an input with floating label and no value", () => {
   beforeEach(async () => {
     component = await render(FloatingLabel, { value: "" });
   });
@@ -56,7 +56,7 @@ describe("given an input textbox with floating label and no value", () => {
       await component.rerender();
     });
 
-    it("it should send a textbox floating label init event", () => {
+    it("it should send a floating label init event", () => {
       expect(component.emitted("floating-label-init")).has.length(1);
     });
   });
